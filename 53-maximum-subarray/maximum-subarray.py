@@ -9,7 +9,8 @@ class Solution(object):
         i=0
         while i<len(nums):
             curr+=nums[i]
-            result=max(result,curr)
+            if curr>result:
+                result=curr
             if curr<0:
                 curr=0
             i+=1
