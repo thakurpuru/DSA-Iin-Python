@@ -5,11 +5,4 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        heap=[]
-        j=0
-        while j<len(nums):
-            heapq.heappush(heap,nums[j])
-            if len(heap)>k:
-                heapq.heappop(heap)
-            j+=1
-        return heap[0]
+        return heapq.nlargest(k, nums)[-1]
