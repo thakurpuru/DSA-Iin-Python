@@ -5,17 +5,16 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        num=sorted(nums)
         i=0
-        j=len(num)-1
+        j=len(nums)-1
         while i<=j:
             mid=(i+j)//2
-            if target<num[mid]:
+            if target<nums[mid]:
                 j=mid-1
-            elif target>num[mid]:
+            elif target>nums[mid]:
                 i=mid+1
             else:
-                return nums.index(target)
+                return mid
         return -1
 
             
