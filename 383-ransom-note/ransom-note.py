@@ -7,13 +7,12 @@ class Solution(object):
         """
         if len(ransomNote) > len(magazine):
             return False
-        a=list(magazine)
+        a=Counter(magazine)
         s=ransomNote
+        s_count=Counter(ransomNote)
         i=0
         while i<len(s):
-            if s[i] in a:
-                a.pop(a.index(s[i]))
-            else:
+            if s_count[s[i]]>a[s[i]]:
                 return False
             i+=1
 
