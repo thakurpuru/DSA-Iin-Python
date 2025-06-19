@@ -5,13 +5,16 @@ class Solution(object):
         :rtype: bool
         """
         i=0
-        m={}
-        while i<len(nums):
+        j=1
+        nums.sort()
+        while j<len(nums):
             
-            if nums[i] in m:
+            if nums[i]==nums[j]:
                 return True
-            m[nums[i]]=1 
-            i+=1   
+            else:
+                i+=1
+                j+=1
+               
 
         return False    
 
