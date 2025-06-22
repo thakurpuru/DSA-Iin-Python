@@ -8,7 +8,10 @@ class MinStack(object):
         :type val: int
         :rtype: None
         """
-        self.stack.append(val)
+        min_val=self.getMin()
+        if min_val>val or min_val==None:
+            min_val=val
+        self.stack.append([val,min_val])
 
         
 
@@ -23,14 +26,14 @@ class MinStack(object):
         """
         :rtype: int
         """
-        return self.stack[-1]
+        return self.stack[-1][0]
         
 
     def getMin(self):
         """
         :rtype: int
         """
-        return min(self.stack)
+        return self.stack[-1][1] if self.stack else None
         
 
 
