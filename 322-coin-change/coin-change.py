@@ -12,7 +12,7 @@ class Solution(object):
                 if i-coin>=0:
                     dp[i]=min(dp[i],1+dp[i-coin])
 
-        return dp[-1] if dp[-1]!=amount+1 else -1
+        return dp[amount] if dp[amount]!=amount+1 else -1
                 
 
 
