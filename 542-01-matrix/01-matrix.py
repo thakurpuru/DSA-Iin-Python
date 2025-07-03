@@ -18,10 +18,9 @@ class Solution(object):
             r,c=q.popleft()
             for dr,dc in direction:
                 nr,nc=r+dr,c+dc
-                if 0<= nr <rows and 0<= nc <cols:
-                    if res[r][c]+1<res[nr][nc]:
-                        res[nr][nc]=res[r][c]+1
-                        q.append((nr,nc))
+                if 0<= nr <rows and 0<= nc <cols and res[r][c]+1<res[nr][nc]:
+                    res[nr][nc]=res[r][c]+1
+                    q.append((nr,nc))
         return res
 
 
