@@ -11,7 +11,9 @@ class Solution(object):
             top=res[-1]
             if intervals[i][0]<=top[1]:
                 res.pop()
-                y=max(top[1],intervals[i][1])
+                y=intervals[i][1]
+                if top[1]>y:
+                    y=top[1]
                 res.append([top[0],y])
             else:
                 res.append(intervals[i])
