@@ -12,8 +12,7 @@ class Solution(object):
             
             if st[i]==' ':
                 if mid!="" and mid!=" ":
-                    stp=mid.strip()
-                    res+=(stp[::-1]+' ')
+                    res+=(mid[::-1]+' ')
                     mid=""
             else:
                 mid+=st[i]
