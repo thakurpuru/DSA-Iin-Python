@@ -28,10 +28,7 @@ class Solution(object):
 
         def QueenPlace(row,board):
             if row==n:
-                path=[]
-                for i in range(n):
-                    path.append("".join(board[i]))
-                res.append(path)
+                res.append(["".join(r) for r in board])
                 return
             for j in range(n):
                 if issafe(row,j,board):
