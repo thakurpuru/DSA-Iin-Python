@@ -12,7 +12,20 @@ public:
         return dp[i]=false;
     }
     bool canJump(vector<int>& nums) {
-        dp.assign(nums.size(),-1);
-        return solve(nums,0);
+        int n=nums.size();
+        // dp.assign(nums.size(),-1);
+        for(int i=0;i<n-1;i++){
+            if(nums[i]==0){
+                bool flag=false;
+                for(int j=i-1;j>=0;j--){
+                    if(nums[j]>(i-j)){
+                        flag=true;
+                        break;
+                    }
+                }
+                if(!flag) return false;
+            }
+        }
+        return true;
     }
 };
