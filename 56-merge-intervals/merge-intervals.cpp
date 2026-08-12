@@ -8,8 +8,7 @@ public:
         for(int i=1;i<n;i++){
             auto a=ans.back();
             if(a[1]>=intervals[i][0]){
-                ans.pop_back();
-                ans.push_back({a[0],max(a[1],intervals[i][1])});
+                ans.back()[1]=max(a[1],intervals[i][1]);
             }else{
                 ans.push_back(intervals[i]);
             }
