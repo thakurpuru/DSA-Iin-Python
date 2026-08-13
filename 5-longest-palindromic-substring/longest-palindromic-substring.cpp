@@ -1,32 +1,26 @@
 class Solution {
 public:
-    pair<int,int> check(string& s,int i){
-        int l=i,r=i;
-        while(l>0 && r<s.size()-1 && s[l-1]==s[r+1]){
+    pair<int,int> check(string& s,int l,int r){
+        while(l>=0 && r<s.size() && s[l]==s[r]){
             l--;
             r++;
         }
-        int j=i,k=i+1;
-        while(j>=0 && k<s.size() && s[j]==s[k]){
-            j--;k++;
-        }
-        int a=r-l+1,b=k-j-1;
-        if(a>b){
-            return {a,l};
-        }
-        return {b,j+1};
+        return {r-l-1,l+1};
     }
     string longestPalindrome(string s) {
-        if(s.size()<=1) return s;
-        int ans=0;
-        string res="";
+        int ans=0,j=-1;
         for(int i=0;i<s.size();i++){
-            auto [len,l]=check(s,i);
-            if(len>1 && len>ans){
-                res=s.substr(l,len);
-                ans=len;
+            auto a=check(s,i,i);
+            auto b=check(s,i,i+1);
+            if(a.first>ans){
+                ans=a.first;
+                j=a.second;
+            }
+            if(b.first>ans){
+                ans=b.first;
+                j=b.second;
             }
         }
-        return res==""?res+s[0]:res;
+        return s.substr(j,ans);
     }
 };
