@@ -5,15 +5,17 @@ class Solution(object):
         :type magazine: str
         :rtype: bool
         """
-        if len(ransomNote) > len(magazine):
-            return False
-        a=Counter(magazine)
-        s=ransomNote
-        s_count=Counter(ransomNote)
-        i=0
-        while i<len(s):
-            if s_count[s[i]]>a[s[i]]:
+        mp1={}
+        mp2={}
+        for c in magazine:
+            mp2[c]=mp2.get(c,0)+1
+        for c in ransomNote:
+            if not mp2.get(c,0):
                 return False
-            i+=1
-
+            mp1[c]=mp1.get(c,0)+1
+        for c in ransomNote:
+            if mp1[c]>mp2[c]:
+                return False
         return True
+
+        
