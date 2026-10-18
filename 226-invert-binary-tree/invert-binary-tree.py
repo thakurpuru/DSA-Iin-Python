@@ -10,12 +10,13 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: Optional[TreeNode]
         """
-        if root==None:
-            return
-       
-        root.left,root.right=root.right,root.left
-        self.invertTree(root.left)
-        self.invertTree(root.right)
-        return root
+        def inorder(node):
+            if not node:
+                return None
 
+            head=TreeNode(node.val)
+            head.left=inorder(node.right)
+            head.right=inorder(node.left)
+            return head
+        return inorder(root)
         
