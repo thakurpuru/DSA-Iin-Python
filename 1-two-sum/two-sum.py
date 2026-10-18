@@ -5,15 +5,11 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        li=[]
-        for i  in range(0,len(nums)):
-            a=target-nums[i]
-            if a in nums :
-                ind=nums.index(a)
-                if ind!=i:
-                    li.append(i)
-                    li.append(ind)
-                    return li
-        return li
-
+        mp={}
+        for i in range(len(nums)):
+            a=mp.get(target-nums[i],-1)
+            if a!=-1:
+                return [a,i]
+            mp[nums[i]]=i
+        return -1
         
