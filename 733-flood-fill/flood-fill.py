@@ -7,14 +7,15 @@ class Solution(object):
         :type color: int
         :rtype: List[List[int]]
         """
-        m=len(image)
-        n=len(image[0])
-        intial=image[sr][sc]
-        if intial == color:
+        
+        n=len(image)
+        m=len(image[0])
+        org=image[sr][sc]
+        if color==org:
             return image
         def dfs(i,j):
-            if i>=m or i<0 or j>=n or j<0 or image[i][j]!=intial:
-                return
+            if i<0 or j<0 or j>=m or i>=n or image[i][j]!=org:
+                return 
             image[i][j]=color
             dfs(i+1,j)
             dfs(i-1,j)
@@ -22,4 +23,3 @@ class Solution(object):
             dfs(i,j-1)
         dfs(sr,sc)
         return image
-        
