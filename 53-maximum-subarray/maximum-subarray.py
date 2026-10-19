@@ -4,14 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        result=float('-inf')
-        curr=0
-        i=0
-        while i<len(nums):
-            curr+=nums[i]
-            if curr>result:
-                result=curr
-            if curr<0:
-                curr=0
-            i+=1
-        return result        
+        sm=0
+        ans=-1e9
+        for num in nums:
+            sm+=num
+            ans=max(sm,ans)
+            if sm<0:
+                sm=0
+        return ans
+        
